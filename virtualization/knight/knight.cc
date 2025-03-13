@@ -2,7 +2,9 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#include <sstream>
 #include <regex>
+#include <array>
 #include <cstdio>
 #include <unistd.h>
 #include <fcntl.h>
