@@ -12,16 +12,17 @@ void demo_dup_offset() {
         exit(EXIT_FAILURE);
     }
 
-    // Write "A" to the file
-    write(fd1, "A", 1);
-    
     // Duplicate the file descriptor
     int fd2 = dup(fd1);
+
     if (fd2 < 0) {
         perror("Failed to duplicate file descriptor");
         close(fd1);
         exit(EXIT_FAILURE);
     }
+
+    // Write "A" to the file
+    write(fd1, "A", 1);
 
     // Write "B" using the duplicated file descriptor
     write(fd2, "B", 1);
@@ -50,7 +51,6 @@ void demo_fork_offset() {
     }
 
     // Write "C" to the file
-    write(fd, "C", 1);
 
     pid_t pid = fork();
     if (pid < 0) {
@@ -65,6 +65,7 @@ void demo_fork_offset() {
     } else {
         // Parent process
         wait(NULL); // Wait for child to finish
+        write(fd, "C", 1);
         close(fd);
     }
 
