@@ -8,7 +8,7 @@ test: all
 
 all: $(OBJS)
 
-%: %.c
+%: %.c testkit.c
 	gcc $(CFLAGS) $< testkit.c -o $@
 
 clean:
