@@ -22,7 +22,7 @@ initramfs:
 
 fsroot:
 	mkdir -p fsroot/modules
-	cp $$(find /lib/modules/$K/ -name e1000.ko) fsroot/modules/
+	cp $$(find /lib/modules/$K/ -name e1000.ko.zst) fsroot/modules/
 
 	dd if=/dev/zero of=$(IMG) bs=1M count=64
 	mkfs.ext4 -F $(IMG)
@@ -38,8 +38,7 @@ run:
 	  -netdev user,id=net0,hostfwd=tcp:127.0.0.1:8080-:8080 -device e1000,netdev=net0 \
 	  -kernel build/vmlinuz \
 	  -initrd build/initramfs.cpio.gz \
-	  -machine accel=kvm:tcg \
-	  -append "console=ttyS0 quiet rdinit=$(INIT)"
+	  -append "console=ttyS0 rdinit=$(INIT)"
 
 clean:
 	rm -rf build fsroot/modules
