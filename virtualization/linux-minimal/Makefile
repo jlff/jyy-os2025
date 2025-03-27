@@ -20,7 +20,6 @@ run:
 	  -serial mon:stdio \
 	  -kernel build/vmlinuz \
 	  -initrd build/initramfs.cpio.gz \
-	  -machine accel=kvm:tcg \
 	  -append "console=ttyS0 quiet rdinit=$(INIT)"
 
 clean:
