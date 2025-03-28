@@ -35,7 +35,6 @@ run:
 	qemu-system-x86_64 \
 	  -serial mon:stdio -vga std \
 	  -drive file=$(IMG),format=raw,index=0,media=disk \
-	  -netdev user,id=net0,hostfwd=tcp:127.0.0.1:8080-:8080 -device e1000,netdev=net0 \
 	  -kernel build/vmlinuz \
 	  -initrd build/initramfs.cpio.gz \
 	  -append "console=ttyS0 rdinit=$(INIT)"

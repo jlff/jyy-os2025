@@ -5,6 +5,8 @@
 #   /dev/console - the console device
 BB=/bin/busybox
 
+$BB sh
+
 # Delete this file
 # (Yes, we can do this on UNIX! The file is "removed"
 # after the last reference, the fd, is gone.)
